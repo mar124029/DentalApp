@@ -2,8 +2,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Toast from "toastify-react-native";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./views/Login.tsx";
+import Register from "./views/Register";
 import BottomTabs from "./components/BottomTabs";
 
 const Stack = createStackNavigator();

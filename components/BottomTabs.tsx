@@ -2,10 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import Home from './Home';
-import MisCitas from './MisCitas';
-import Agendar from './Agendar';
-import Perfil from './Perfil';
+import Home from '../views/Home';
+import MisCitas from '../views/MisCitas';
+import Agendar from '../views/Agendar';
+import Perfil from '../views/Perfil';
 
 const Tab = createBottomTabNavigator();
 

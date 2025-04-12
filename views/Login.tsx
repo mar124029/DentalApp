@@ -11,8 +11,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
-import { loginHandler } from '../handlers/loginHandler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useLogin } from '../hooks/useLogin';
 
 
 const { width } = Dimensions.get('window');
@@ -21,6 +21,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [dni, setDni] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, loginHandler] = useLogin();
 
   return (
     <KeyboardAvoidingView
@@ -80,7 +81,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.loginButton} onPress={() => loginHandler(dni, password, navigation)}>
+          <TouchableOpacity style={styles.loginButton} disabled={loading} onPress={() => loginHandler(dni, password, navigation)}>
             <Text style={styles.loginButtonText}>Ingresar</Text>
           </TouchableOpacity>
         </View>
