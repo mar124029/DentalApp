@@ -1,4 +1,3 @@
-// Register.tsx
 import React, { useState } from 'react';
 import {
     View,
@@ -11,14 +10,14 @@ import { TextInput } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Ionicons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native-gesture-handler';
-import { handleSubmit } from '../handlers/registerHandler';
+import { useRegister } from '../hooks/useRegister';
 import { useNavigation } from '@react-navigation/native';
-
 
 export default function Register() {
     const navigation = useNavigation();
     const [form, setForm] = useState({
         nombre: '',
+        apellido: '',
         dni: '',
         nacimiento: '',
         telefono: '',
@@ -30,6 +29,7 @@ export default function Register() {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
+    const { loading, registerHandler } = useRegister();
 
     const handleChange = (field, value) => {
         setForm({ ...form, [field]: value });
@@ -53,9 +53,17 @@ export default function Register() {
                 </View>
 
                 <TextInput
-                    label="Nombre y Apellidos"
+                    label="Nombre"
                     value={form.nombre}
                     onChangeText={(val) => handleChange('nombre', val)}
+                    style={styles.input}
+                    left={<TextInput.Icon icon="account" />}
+                />
+
+                <TextInput
+                    label="Apellido"
+                    value={form.apellido}
+                    onChangeText={(val) => handleChange('apellido', val)}
                     style={styles.input}
                     left={<TextInput.Icon icon="account" />}
                 />
@@ -136,7 +144,7 @@ export default function Register() {
                     }
                 />
 
-                <TouchableOpacity style={styles.button} onPress={() => handleSubmit(form, setForm, navigation)}>
+                <TouchableOpacity style={styles.button} disabled={loading} onPress={() => registerHandler(form, setForm, navigation)}>
                     <Text style={styles.buttonText}>CREAR CUENTA</Text>
                 </TouchableOpacity>
 

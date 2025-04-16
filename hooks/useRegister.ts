@@ -11,7 +11,7 @@ export const useRegister = () => {
   const [loading, setLoading] = useState(false);
 
   const registerHandler = async (form, setForm, navigation) => {
-    const { correo, password, confirmar, nombre, dni, nacimiento, telefono } = form;
+    const { correo, password, confirmar, nombre, apellido, dni, nacimiento, telefono } = form || {};
 
     if (password !== confirmar) {
       Alert.alert("Error", "Las contraseñas no coinciden");
@@ -25,6 +25,7 @@ export const useRegister = () => {
 
       const response = await axios.post("http://192.168.1.8:3001/api/auth/register", {
         nombre,
+        apellido,
         dni,
         nacimiento: nacimientoFormateado,
         telefono,
@@ -34,6 +35,7 @@ export const useRegister = () => {
 
       setForm({
         nombre: "",
+        apellido: "",
         dni: "",
         nacimiento: "",
         telefono: "",

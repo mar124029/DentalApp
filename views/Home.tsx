@@ -10,12 +10,15 @@ import Welcome from "../components/Welcome"; // asegúrate que la ruta sea corre
 const HomeScreen = () => {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState();
     const navigation = useNavigation();
 
     useEffect(() => {
         const fetchProtectedData = async () => {
             try {
                 const token = await AsyncStorage.getItem("userToken");
+                const user = await AsyncStorage.getItem("userData");
+
                 if (!token) {
                     Alert.alert("No estás autenticado");
                     return;
@@ -48,7 +51,7 @@ const HomeScreen = () => {
 
     return (
         <ScrollView style={styles.container}>
-            <Welcome nombre={data?.nombre} />
+            <Welcome nombre={""} />
 
             <Card style={styles.card}>
                 <Card.Content>
