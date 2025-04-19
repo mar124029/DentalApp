@@ -9,7 +9,10 @@ const MisCitas = () => {
                 <Text>Cita 1</Text>
             </View>
             <View>
-                <Text>Cita 1</Text>
+                <Text>Cita 2</Text>
+            </View>
+            <View>
+                <Text>Cita 3</Text>
             </View>
         </View>
     );
