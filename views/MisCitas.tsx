@@ -5,6 +5,15 @@ const MisCitas = () => {
     return (
         <View>
             <Text>Mis citas aquí</Text>
+            <View>
+                <Text>Cita 1</Text>
+            </View>
+            <View>
+                <Text>Cita 2</Text>
+            </View>
+            <View>
+                <Text>Cita 3</Text>
+            </View>
         </View>
     );
 };
